@@ -60,7 +60,7 @@ for url in feeds:
 
 # GitHub 新仓库搜索（含Agent关键词）
 search_url = f"https://api.github.com/search/repositories?q=(\"ai agent\" OR \"agent skills\" OR mcp OR \"llm agent\" OR openclaw OR \"智能体\") created:>{yesterday.isoformat()}&sort=stars&order=desc&per_page=12"
-gh_items = requests.get(search_url, headers={"Accept": "application/vnd.github.v3+json"}).json().get("items", [])
+gh_items = requests.get(search_url, headers=HEADERS).json().get("items",[])
 for repo in gh_items:
     items.append({
         "title": f"{repo['full_name']} - {repo.get('description', '')[:100]}",
@@ -78,7 +78,7 @@ framework_repos = [
 
 for repo in framework_repos:
     release_url = f"https://api.github.com/repos/{repo}/releases?per_page=2"
-    releases = requests.get(release_url, headers={"Accept": "application/vnd.github.v3+json"}).json()
+    releases = requests.get(release_url, headers=HEADERS).json()
     if releases and isinstance(releases, list):
         for r in releases:
             try:

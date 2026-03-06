@@ -9,7 +9,7 @@ yesterday = today - timedelta(days=1)
 
 # 增加授权
 GITHUB_TOEKN = os.getenv("GITHUB_TOKEN")
-HEADERS  {
+HEADERS = {
     "Accept": "application/vnd.github.v3+json",
     "Authorization": f"token {GITHUB_TOKEN}"
 }

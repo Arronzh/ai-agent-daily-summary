@@ -1,0 +1,27 @@
+name: AI Agent & Skills 每日情报简报
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # 每天 UTC 0:00 = HKT 早上 8:00
+  workflow_dispatch:      # 允许手动测试
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 安装依赖
+        run: pip install feedparser requests openai
+
+      - name: 生成并推送每日总结
+        env:
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python daily_summary.py

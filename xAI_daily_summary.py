@@ -101,7 +101,7 @@ items_text = "\n".join([f"- **{item['title']}** ({item['source']}): {item['desc'
 
 # ==================== 2. Grok API 智能总结 ====================
 client = OpenAI(
-    api_key=os.getenv("GROK_API_KEY"),
+    api_key=os.getenv("API_KEY"),
     base_url="https://api.x.ai/v1"
 )
 

@@ -8,8 +8,28 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
+
+    # 核心权限声明
+    permissions:
+      contents: read # 读取仓库代码（用于 checkout）
+      packages: read # 读取 Docker 镜像（用于拉取 RSSHub 镜像）
+      
     steps:
       - uses: actions/checkout@v4
+
+      # 启动 RSSHub 服务（容器权限）
+      - name: Start RSSHub Service
+        run: |
+          docker run -d --name rsshub \
+            -p 1200:1200 \
+            diygod/rsshub:latest
+          
+      # 等待RSSHub服务启动
+      - name: Wait for RSSHub
+        run: |
+          until curl -f http://localhost:1200; do
+            sleep 1
+          done
 
       - name: 设置 Python
         uses: actions/setup-python@v5

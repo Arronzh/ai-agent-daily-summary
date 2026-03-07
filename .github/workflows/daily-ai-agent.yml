@@ -21,7 +21,7 @@ jobs:
 
       - name: 生成并推送每日总结
         env:
-          GROK_API_KEY: ${{ secrets.ALIYUN_KEY }}
+          API_KEY: ${{ secrets.ALIYUN_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python aliyun_daily_summary.py

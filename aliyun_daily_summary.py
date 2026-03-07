@@ -101,7 +101,7 @@ items_text = "\n".join([f"- **{item['title']}** ({item['source']}): {item['desc'
 # ==================== 2. 阿里云 Coding Plan API 智能总结 ====================
 # 关键修改：使用 Coding Plan 专属 API 配置
 client = OpenAI(
-    api_key=os.getenv("ALIYUN_CODING_PLAN_API_KEY"),  # 从环境变量获取
+    api_key=os.getenv("API_KEY"),  # 从环境变量获取
     base_url="https://coding.dashscope.aliyuncs.com/v1",  # Coding Plan 专属端点
 )
 

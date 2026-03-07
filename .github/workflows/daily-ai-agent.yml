@@ -12,6 +12,7 @@ jobs:
     # 核心权限声明
     permissions:
       contents: read # 读取仓库代码（用于 checkout）
+      issues: write # 写ISSUE
       packages: read # 读取 Docker 镜像（用于拉取 RSSHub 镜像）
       
     steps:

@@ -40,6 +40,14 @@ feeds = [
     "https://rsshub.app/wechat/mp/xinzhiyuan",       # 新智元
     "https://rsshub.app/wechat/mp/deeplearningtalk", # 深度学习大讲堂
     "https://rsshub.app/wechat/mp/aitechcamp",       # AI科技大本营
+    # 掘金热榜（使用官方接口，比 RSSHub 稳定）
+    "https://api.juejin.cn/recommend_api/v1/article/recommend_all_feed?aid=2608&uuid=7240289817254422054&spider=0",
+    # 知乎热榜（官方接口）
+    "https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?limit=10",
+    # CSDN 热榜（官方接口）
+    "https://blog.csdn.net/phoenix/web/blog/hot-rank?page=0&pageSize=50&type=",
+    # B站热榜（官方接口）
+    "https://api.bilibili.com/x/web-interface/ranking/v2?rid=0&type=all",
 ]
 
 for url in feeds:
